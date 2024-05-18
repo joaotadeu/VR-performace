@@ -1,9 +1,13 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
+// se preocupando com o desempenho do sistema
 export let options = {
-  vus: 10, // Numero de usuarios virtuais
-  duration: '5s', // Duração do teste
+    stages: [
+      {duration: '1m', target: 100 },
+      {duration: '2m', target: 100 },
+      {duration: '1m', target: 0} 
+    ],
   thresholds: {
     http_req_duration: ['p(95)<2000'],
     http_req_failed: ['rate<0.1']

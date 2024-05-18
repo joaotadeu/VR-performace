@@ -1,6 +1,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
+//resiliencia, recuperação, mudanças abruptas e em curtos periodos
 export let options = {
   stages: [
     { duration: '1m', target: 50 }, // Inicia com 50 usuarios virtuais
